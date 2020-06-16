@@ -1,0 +1,93 @@
+2020-06-08T03:27:17.990215+00:00 app[api]: Initial release by user arturgazizov105@gmail.com
+2020-06-08T03:27:17.990215+00:00 app[api]: Release v1 created by user arturgazizov105@gmail.com
+2020-06-08T03:27:18.871048+00:00 app[api]: Release v2 created by user arturgazizov105@gmail.com
+2020-06-08T03:27:18.871048+00:00 app[api]: Enable Logplex by user arturgazizov105@gmail.com
+2020-06-08T03:42:42.000000+00:00 app[api]: Build started by user arturgazizov105@gmail.com
+2020-06-08T03:42:59.746304+00:00 app[api]: Deploy 47b57a01 by user arturgazizov105@gmail.com
+2020-06-08T03:42:59.746304+00:00 app[api]: Release v3 created by user arturgazizov105@gmail.com
+2020-06-08T03:42:59.768185+00:00 app[api]: Scaled to web@1:Free by user arturgazizov105@gmail.com
+2020-06-08T03:43:00.000000+00:00 app[api]: Build succeeded
+2020-06-08T03:43:02.185900+00:00 heroku[web.1]: Starting process with command `npm start`
+2020-06-08T03:43:04.244436+00:00 app[web.1]: npm ERR! missing script: start
+2020-06-08T03:43:04.251288+00:00 app[web.1]: 
+2020-06-08T03:43:04.251535+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2020-06-08T03:43:04.251631+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2020-06-08T03_43_04_245Z-debug.log
+2020-06-08T03:43:04.298930+00:00 heroku[web.1]: Process exited with status 1
+2020-06-08T03:43:04.328741+00:00 heroku[web.1]: State changed from starting to crashed
+2020-06-08T03:43:04.330587+00:00 heroku[web.1]: State changed from crashed to starting
+2020-06-08T03:43:06.236524+00:00 heroku[web.1]: Starting process with command `npm start`
+2020-06-08T03:43:08.166164+00:00 app[web.1]: npm ERR! missing script: start
+2020-06-08T03:43:08.174720+00:00 app[web.1]: 
+2020-06-08T03:43:08.174972+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2020-06-08T03:43:08.175039+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2020-06-08T03_43_08_168Z-debug.log
+2020-06-08T03:43:08.222899+00:00 heroku[web.1]: Process exited with status 1
+2020-06-08T03:43:08.260570+00:00 heroku[web.1]: State changed from starting to crashed
+2020-06-08T03:49:33.000000+00:00 app[api]: Build started by user arturgazizov105@gmail.com
+2020-06-08T03:49:51.898658+00:00 app[api]: Release v4 created by user arturgazizov105@gmail.com
+2020-06-08T03:49:51.898658+00:00 app[api]: Deploy 5eb3e8d5 by user arturgazizov105@gmail.com
+2020-06-08T03:49:52.000000+00:00 app[api]: Build succeeded
+2020-06-08T03:49:53.062816+00:00 heroku[web.1]: State changed from crashed to starting
+2020-06-08T03:49:55.041582+00:00 heroku[web.1]: Starting process with command `node app.js`
+2020-06-08T03:49:56.879388+00:00 app[web.1]: /app/app.js:5
+2020-06-08T03:49:56.879413+00:00 app[web.1]: car port =process.env.port ||process.env.PORT || 3000;
+2020-06-08T03:49:56.879414+00:00 app[web.1]: ^^^^
+2020-06-08T03:49:56.879414+00:00 app[web.1]: 
+2020-06-08T03:49:56.879415+00:00 app[web.1]: SyntaxError: Unexpected identifier
+2020-06-08T03:49:56.879415+00:00 app[web.1]: at wrapSafe (internal/modules/cjs/loader.js:1054:16)
+2020-06-08T03:49:56.879415+00:00 app[web.1]: at Module._compile (internal/modules/cjs/loader.js:1102:27)
+2020-06-08T03:49:56.879416+00:00 app[web.1]: at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+2020-06-08T03:49:56.879416+00:00 app[web.1]: at Module.load (internal/modules/cjs/loader.js:986:32)
+2020-06-08T03:49:56.879417+00:00 app[web.1]: at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+2020-06-08T03:49:56.879417+00:00 app[web.1]: at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:71:12)
+2020-06-08T03:49:56.879417+00:00 app[web.1]: at internal/main/run_main_module.js:17:47
+2020-06-08T03:49:56.929815+00:00 heroku[web.1]: Process exited with status 1
+2020-06-08T03:49:56.974881+00:00 heroku[web.1]: State changed from starting to crashed
+2020-06-08T03:50:02.746092+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=ledemoji.herokuapp.com request_id=395a0780-43c8-4c67-a15c-64ffff97487d fwd="80.221.74.68" dyno= connect= service= status=503 bytes= protocol=https
+2020-06-08T03:50:03.081269+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=ledemoji.herokuapp.com request_id=972ff98c-0748-4d41-b698-5d44025de9a2 fwd="80.221.74.68" dyno= connect= service= status=503 bytes= protocol=https
+2020-06-08T03:52:25.000000+00:00 app[api]: Build started by user arturgazizov105@gmail.com
+2020-06-08T03:52:44.615003+00:00 app[api]: Deploy 7e2f74eb by user arturgazizov105@gmail.com
+2020-06-08T03:52:44.615003+00:00 app[api]: Release v5 created by user arturgazizov105@gmail.com
+2020-06-08T03:52:45.000000+00:00 app[api]: Build succeeded
+2020-06-08T03:52:45.864138+00:00 heroku[web.1]: State changed from crashed to starting
+2020-06-08T03:52:48.705940+00:00 heroku[web.1]: Starting process with command `node app.js`
+2020-06-08T03:52:51.082749+00:00 app[web.1]: /app/app.js:5
+2020-06-08T03:52:51.082787+00:00 app[web.1]: car port =process.env.port ||process.env.PORT || 3000;
+2020-06-08T03:52:51.082788+00:00 app[web.1]: ^^^^
+2020-06-08T03:52:51.082788+00:00 app[web.1]: 
+2020-06-08T03:52:51.082788+00:00 app[web.1]: SyntaxError: Unexpected identifier
+2020-06-08T03:52:51.082789+00:00 app[web.1]: at wrapSafe (internal/modules/cjs/loader.js:1054:16)
+2020-06-08T03:52:51.082789+00:00 app[web.1]: at Module._compile (internal/modules/cjs/loader.js:1102:27)
+2020-06-08T03:52:51.082790+00:00 app[web.1]: at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+2020-06-08T03:52:51.082790+00:00 app[web.1]: at Module.load (internal/modules/cjs/loader.js:986:32)
+2020-06-08T03:52:51.082790+00:00 app[web.1]: at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+2020-06-08T03:52:51.082791+00:00 app[web.1]: at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:71:12)
+2020-06-08T03:52:51.082791+00:00 app[web.1]: at internal/main/run_main_module.js:17:47
+2020-06-08T03:52:51.145763+00:00 heroku[web.1]: Process exited with status 1
+2020-06-08T03:52:51.204904+00:00 heroku[web.1]: State changed from starting to crashed
+2020-06-08T03:52:51.762190+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=ledemoji.herokuapp.com request_id=f4a7f8d4-ce31-4f9f-9445-572436fea8f6 fwd="80.221.74.68" dyno= connect= service= status=503 bytes= protocol=https
+2020-06-08T03:52:51.974053+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=ledemoji.herokuapp.com request_id=28bf94e8-ae69-43f6-8bef-a2c7d1eecf2e fwd="80.221.74.68" dyno= connect= service= status=503 bytes= protocol=https
+2020-06-08T03:54:41.000000+00:00 app[api]: Build started by user arturgazizov105@gmail.com
+2020-06-08T03:54:56.241215+00:00 heroku[web.1]: State changed from crashed to starting
+2020-06-08T03:54:57.482817+00:00 app[api]: Deploy d8ce85b8 by user arturgazizov105@gmail.com
+2020-06-08T03:54:57.482817+00:00 app[api]: Release v6 created by user arturgazizov105@gmail.com
+2020-06-08T03:54:58.000000+00:00 app[api]: Build succeeded
+2020-06-08T03:54:58.376826+00:00 heroku[web.1]: Starting process with command `node app.js`
+2020-06-08T03:54:58.861098+00:00 heroku[web.1]: Restarting
+2020-06-08T03:55:00.402972+00:00 app[web.1]: /app/app.js:5
+2020-06-08T03:55:00.402991+00:00 app[web.1]: car port =process.env.port ||process.env.PORT || 3000;
+2020-06-08T03:55:00.402991+00:00 app[web.1]: ^^^^
+2020-06-08T03:55:00.402992+00:00 app[web.1]: 
+2020-06-08T03:55:00.402992+00:00 app[web.1]: SyntaxError: Unexpected identifier
+2020-06-08T03:55:00.402992+00:00 app[web.1]: at wrapSafe (internal/modules/cjs/loader.js:1054:16)
+2020-06-08T03:55:00.402993+00:00 app[web.1]: at Module._compile (internal/modules/cjs/loader.js:1102:27)
+2020-06-08T03:55:00.402994+00:00 app[web.1]: at Object.Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+2020-06-08T03:55:00.402994+00:00 app[web.1]: at Module.load (internal/modules/cjs/loader.js:986:32)
+2020-06-08T03:55:00.402994+00:00 app[web.1]: at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+2020-06-08T03:55:00.402995+00:00 app[web.1]: at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:71:12)
+2020-06-08T03:55:00.402995+00:00 app[web.1]: at internal/main/run_main_module.js:17:47
+2020-06-08T03:55:00.442475+00:00 heroku[web.1]: Process exited with status 1
+2020-06-08T03:55:01.433692+00:00 heroku[web.1]: Starting process with command `node app.js`
+2020-06-08T03:55:04.837970+00:00 app[web.1]: Running at Port 3000
+2020-06-08T03:55:05.824171+00:00 heroku[web.1]: State changed from starting to up
+2020-06-08T03:55:07.242426+00:00 heroku[router]: at=info method=GET path="/" host=ledemoji.herokuapp.com request_id=a23f3f53-eadf-4e96-8f65-1e6f937aa364 fwd="80.221.74.68" dyno=web.1 connect=0ms service=19ms status=200 bytes=11149 protocol=https
+2020-06-08T03:55:07.383886+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=ledemoji.herokuapp.com request_id=a2f0eae5-14ec-4b99-a87e-70d6a4342d69 fwd="80.221.74.68" dyno=web.1 connect=0ms service=5ms status=404 bytes=504 protocol=https

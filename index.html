@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html ><head>
+  <title>leds</title>
+  <base href="/">
+  <!--<link href="./index.css" rel="stylesheet" type="text/css">
+in nodejs does not work-->
+
+
+
+<style>
+
+
+body {
+  margin: 0 auto;
+  max-width: 30em;
+  padding: 1em 0;
+  height:100%;
+}
+
+canva{
+  width:100%;
+   height:100%;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 1px;
+  grid-auto-columns: minmax(1px, 1fr);
+  grid-auto-rows: minmax(1px, 1fr);
+ align-content: space-evenly;
+}
+
+
+
+.module {
+  /* Demo-Specific Styles */
+  background: #eaeaea;
+  display: flex;
+  width:50px;
+   height:50px;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.minimodule {
+  /* Demo-Specific Styles */
+  background: #eaeaea;
+  color: none;
+  background-color: #eaeaea;
+  display: flex;
+  width:10px;
+   height:10px;
+  align-items: center;
+  justify-content: center;
+}
+
+
+</style>
+
+
+
+
+
+  </head>
+  <body onload="whenloaded()">
+<span id='port'></span>
+click on tiles
+<button onclick="outputall()">outputall</button>
+<button onclick="count()">count</button>
+<button onclick="deletethem()">delete all emoji</button>
+<button onclick="generatecolors()">
+click to generate random colors over standard ones
+</button>
+<button onclick="saveemoji()">
+click to save emoji to collection
+</button>
+
+<div class="wrapper" id="canvas"></div>
+<div class="wrapper" id="savedcanvas">
+
+
+</div>
+
+</div>
+
+<!--
+does not work in nodejs
+<script src="index.js">
+</script>-->
+
+<script>
+
+var port=document.getElementById('port').innerHTML
+
+function count(){
+  fetch("http://localhost:"+port+"/all")
+  .then(function(data) {
+    data.json().then(function(parsedJson) {
+    alert(parsedJson.length);
+
+  })})}
+
+  function outputall(){
+  fetch("http://localhost:"+port+"/all")
+  .then(function(data) {
+    data.json().then(function(parsedJson) {
+    alert(JSON.stringify(parsedJson));
+
+  })})}
+
+
+/*
+  fetch('http://localhost:"+port+"/deleteall', {
+  method: 'DELETE',
+}).then(function() {
+    alert("deleted")
+
+    fetch("http://localhost:"+port+"/all")
+  .then(function(data) {
+    data.json().then(function(parsedJson) {
+    alert(parsedJson.length);
+
+  })})
+})
+
+
+
+
+
+
+fetch("http://localhost:"+port+"/all")
+  .then(function(data) {
+    data.json().then(function(parsedJson) {
+    alert(parsedJson.length);
+
+  })})
+  */
+
+
+canvas = document.getElementById('canvas');
+  innerhtml=""
+Array.from(Array(64), (_, i) => i+1).forEach(element => {
+innerhtml+="<canvas class=module id='canva"+element+
+"'' onclick='switching("+element+")'>s</canvas>";
+})
+canvas.innerHTML = innerhtml;
+
+let id=0
+let colors=[]
+let colorson=[]
+let emoji=[]
+fetch("http://localhost:"+port+"/all")
+  .then(function(data) {
+    data.json().then(function(parsedJson) {
+      
+    if (parsedJson.length==0)
+      {
+
+        colors=["#3b3cae","#e6c478","#8493b6","#10d2c4","#3a3bc9","#96f2db","#d81db4","#f418f9","#83d32d","#114ef6","#7ad755","#b83011","#36b1ed","#558389","#76636a","#37734e","#fbcdcf","#d32b66","#15e498","#1b27e3","#47e832","#7e0dde","#2a6ea1","#861ff5","#13e1f9","#b6f7ea","#7abac7","#748389","#f64c0f","#b70534","#f004c1","#df5b34","#6da023","#1995dd","#d764d3","#8f6b60","#c40b95","#ccc22f","#2a6ad6","#9b7b42","#e8bb80","#c3daab","#fd5d23","#40dbd2","#7e21ed","#63b51c","#9a5a19","#7fa5b9","#21893b","#e3b2c5","#65f0b3","#915324","#6348f1","#f80c7a","#877e2a","#df717d","#1feaf8","#97981","#72b7b4","#29e5e8","#b8d9df","#9ba43e","#7c52ca","#95bb76"]
+      colorson=Array.from(Array(64), (_, i) => false);
+      id=1
+      var payload = {
+          colors: colors,
+          colorson: colorson,
+          id:id
+      };
+      fetch("http://localhost:"+port+"/add",{
+        method: 'POST',
+          headers: {'Accept': 'application/json',
+              'Content-Type': 'application/json'}, // this line is important, if this content-type is not set it wont work
+          body: JSON.stringify( payload )})
+          .then(response => {})
+
+        //emoji=[]
+
+
+      }
+      else
+        {
+          const thecurrent=parsedJson.find((it)=>it.id==1)
+          colors=thecurrent.colors
+          colorson=thecurrent.colorson
+          id=thecurrent.id
+ switchall()
+          //emoji=parsedJson.filter((it)=>it.id!=1)
+
+
+        }
+
+
+
+  })})
+/*
+let colors=JSON.parse(localStorage.getItem("colors"))||["#3b3cae","#e6c478","#8493b6","#10d2c4","#3a3bc9","#96f2db","#d81db4","#f418f9","#83d32d","#114ef6","#7ad755","#b83011","#36b1ed","#558389","#76636a","#37734e","#fbcdcf","#d32b66","#15e498","#1b27e3","#47e832","#7e0dde","#2a6ea1","#861ff5","#13e1f9","#b6f7ea","#7abac7","#748389","#f64c0f","#b70534","#f004c1","#df5b34","#6da023","#1995dd","#d764d3","#8f6b60","#c40b95","#ccc22f","#2a6ad6","#9b7b42","#e8bb80","#c3daab","#fd5d23","#40dbd2","#7e21ed","#63b51c","#9a5a19","#7fa5b9","#21893b","#e3b2c5","#65f0b3","#915324","#6348f1","#f80c7a","#877e2a","#df717d","#1feaf8","#97981","#72b7b4","#29e5e8","#b8d9df","#9ba43e","#7c52ca","#95bb76"]
+let colorson=JSON.parse(localStorage.getItem("colorson"))||Array.from(Array(64), (_, i) => false);
+*/
+//let emoji=JSON.parse(localStorage.getItem("emoji"))||[];
+
+
+
+
+
+function generatecolors()
+{let ii=0
+colors=[]
+while(ii<64){colors.push("#"+((1<<24)*Math.random()|0).toString(16)),ii+=1}
+var payload = {
+        colors: colors,
+        colorson: colorson,
+        id:1
+    };
+//sometimes color will be 5 digit and therefore black
+//localStorage.setItem("colors", JSON.stringify(colors));
+fetch("http://localhost:"+port+"/editfirst",{
+        method: 'POST',
+          headers: {'Accept': 'application/json',
+              'Content-Type': 'application/json'}, // this line is important, if this content-type is not set it wont work
+          body: JSON.stringify( payload )})
+          .then(response => {})
+switchall()
+}
+
+function switchall()
+{
+  let i=1
+while(i<65){
+const canvas=document.getElementById('canva'+i);
+const ctx = canvas.getContext('2d');
+if (colorson[i])
+{
+ctx.fillStyle = colors[i];
+ctx.fillRect(0, 0, 350, 250);
+}
+else
+{
+ctx.fillStyle ="#000000"; 
+ctx.clearRect(0, 0, 350, 250)
+}
+i+=1
+}  
+}
+
+
+
+
+
+function switching(number) 
+{
+colorson[number]=!(colorson[number])
+
+//localStorage.setItem("colorson", JSON.stringify(colorson));
+var payload = {
+        colors: colors,
+        colorson: colorson,
+        id:1
+    };
+//sometimes color will be 5 digit and therefore black
+//localStorage.setItem("colors", JSON.stringify(colors));
+
+
+  fetch("http://localhost:"+port+"/all")//if all removed then make a new one, if first extsts, then just update it
+  .then(function(data) {
+    data.json().then(function(parsedJson) {
+
+      console.log(parsedJson)
+      console.log(parsedJson.find((x)=>x.id==1))
+    if (parsedJson.find((x)=>x.id==1))
+    {      fetch("http://localhost:"+port+"/editfirst",{
+        method: 'POST',
+          headers: {'Accept': 'application/json',
+              'Content-Type': 'application/json'}, // this line is important, if this content-type is not set it wont work
+          body: JSON.stringify( payload )})
+          .then(response => {
+            switchall()})
+        }
+
+    else
+
+      {
+      fetch("http://localhost:"+port+"/add",{
+        method: 'POST',
+          headers: {'Accept': 'application/json',
+              'Content-Type': 'application/json'}, // this line is important, if this content-type is not set it wont work
+          body: JSON.stringify( payload )})
+          .then(response => {
+
+            switchall()})
+}
+
+
+  })})
+
+
+}
+
+
+
+
+
+
+
+
+
+function updateemoji()
+{
+
+
+  fetch("http://localhost:"+port+"/all")
+  .then(function(data) {
+    data.json().then(function(parsedJson) {
+
+emoji=parsedJson.filter((it)=>it.id!=1)
+
+console.log(emoji)
+
+let readyhtml=''
+emoji.forEach((ledtable,numberofemoji) => {
+
+let innerhtmls=''
+ledtable.colors.forEach((acanvas,acanvasindex)=>
+{innerhtmls+="<canvas class=minimodule id='canva"+numberofemoji+"_"+(acanvasindex+1)
++"'>s</canvas>"})
+
+let innerhtml="<div class='wrapper' id=savedcanvas"+numberofemoji+">"+innerhtmls+"</div>"
+
+readyhtml+=innerhtml
+
+  //if ((outputhtml && element[1]=="HTML")||(outputcss && element[1]=="CSS")||(outputjs && element[1]=="JS"))
+  //innerhtml+="<div class='module'>"+element[0]+":"+element[1]+"</div>"});
+})
+document.getElementById('savedcanvas').innerHTML = readyhtml;
+
+
+
+
+emoji.forEach((ledtable,numberofemoji) => {
+ledtable.colors.forEach((acanvas,acanvasindex)=>{
+{
+acanvasindex+=1
+let idnum='canva'+numberofemoji+"_"+acanvasindex;
+const canvas=document.getElementById(idnum);
+const ctx = canvas.getContext('2d');
+
+if(ledtable.colorson[acanvasindex])
+{
+ctx.fillStyle = ledtable.colors[acanvasindex];
+ctx.fillRect(0, 0, 200, 200);
+}
+else
+{
+ctx.fillStyle ="#000000"; 
+ctx.clearRect(0, 0, 200,200)
+}
+}
+})
+})
+
+
+
+    })})
+  
+/**/
+}
+
+
+
+
+
+
+
+
+
+
+function saveemoji()
+{
+
+
+id=2
+      var payload = {
+          colors: colors,
+          colorson: colorson,
+          id:id
+      };
+      fetch("http://localhost:"+port+"/add",{
+        method: 'POST',
+          headers: {'Accept': 'application/json',
+              'Content-Type': 'application/json'}, // this line is important, if this content-type is not set it wont work
+          body: JSON.stringify( payload )})
+          .then(response => {
+
+            
+            updateemoji()})
+
+
+
+//emoji=JSON.parse(localStorage.getItem("emoji"))||[];
+
+//emoji.push([colors,colorson])
+
+//localStorage.setItem("emoji", JSON.stringify(emoji));
+
+
+  
+}
+
+
+function whenloaded()
+{switchall()
+updateemoji()}
+
+
+
+function deletethem()
+{
+  fetch('http://localhost:"+port+"/deleteall', {
+  method: 'DELETE',
+}).then(response =>{
+  alert('deleted');updateemoji()})
+
+
+
+id=1
+      var payload = {
+          colors: colors,
+          colorson: colorson,
+          id:id
+      };
+      fetch("http://localhost:"+port+"/add",{
+        method: 'POST',
+          headers: {'Accept': 'application/json',
+              'Content-Type': 'application/json'}, // this line is important, if this content-type is not set it wont work
+          body: JSON.stringify( payload )})
+          .then(response => {})
+;switchall()
+}
+
+
+
+
+  //npm install -g firebase-tools
+  /*
+  Deploy to Firebase Hosting
+You can deploy now or later. To deploy now, open a terminal window, then navigate to or create a root directory for your web app.
+
+Sign in to Google
+
+firebase login
+Initiate your project
+Run this command from your app's root directory:
+
+
+firebase init
+When you're ready, deploy your web app
+Put your static files (e.g. HTML, CSS, JS) in your app’s deploy directory (the default is 'public'). Then, run this command from your app’s root directory:
+
+
+firebase deploy
+After deploying, view your app at emoji-2f61c.web.app
+
+Need help? Take a look at the Hosting docs
+*/
+
+
+
+</script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+</body>
+</html>
